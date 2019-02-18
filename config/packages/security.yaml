@@ -1,7 +1,5 @@
 security:
     encoders:
-        App\Entity\Admin:
-            algorithm: argon2i
         App\Entity\User:
             algorithm: argon2i
 
@@ -22,7 +20,8 @@ security:
             anonymous: true
             guard:
                 authenticators:
-                    - App\Security\FormAuthenticator
+                    - App\Security\UserAuthenticator
+
 
             # activate different ways to authenticate
 
