@@ -19,22 +19,40 @@ class Billet
     /**
      * @ORM\Column(type="string", length=16)
      */
-    private $Code_Billet;
+    private $code_billet;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $TypeBillet;
+    private $type_billet;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $LibelleBillet;
+    private $libelle_billet;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $NumeroPlace;
+    private $Numero_Place;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="Billets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tarif", inversedBy="Billets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Tarif;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="Billets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Evenement;
 
     public function getId(): ?int
     {
@@ -43,48 +61,84 @@ class Billet
 
     public function getCodeBillet(): ?string
     {
-        return $this->Code_Billet;
+        return $this->code_billet;
     }
 
-    public function setCodeBillet(string $Code_Billet): self
+    public function setCodeBillet(string $code_billet): self
     {
-        $this->Code_Billet = $Code_Billet;
+        $this->code_billet = $code_billet;
 
         return $this;
     }
 
     public function getTypeBillet(): ?string
     {
-        return $this->TypeBillet;
+        return $this->type_billet;
     }
 
-    public function setTypeBillet(string $TypeBillet): self
+    public function setTypeBillet(string $type_billet): self
     {
-        $this->TypeBillet = $TypeBillet;
+        $this->type_billet = $type_billet;
 
         return $this;
     }
 
     public function getLibelleBillet(): ?string
     {
-        return $this->LibelleBillet;
+        return $this->libelle_billet;
     }
 
-    public function setLibelleBillet(string $LibelleBillet): self
+    public function setLibelleBillet(string $libelle_billet): self
     {
-        $this->LibelleBillet = $LibelleBillet;
+        $this->libelle_billet = $libelle_billet;
 
         return $this;
     }
 
     public function getNumeroPlace(): ?int
     {
-        return $this->NumeroPlace;
+        return $this->Numero_Place;
     }
 
-    public function setNumeroPlace(int $NumeroPlace): self
+    public function setNumeroPlace(int $Numero_Place): self
     {
-        $this->NumeroPlace = $NumeroPlace;
+        $this->Numero_Place = $Numero_Place;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->Client;
+    }
+
+    public function setClient(?Client $Client): self
+    {
+        $this->Client = $Client;
+
+        return $this;
+    }
+
+    public function getTarif(): ?Tarif
+    {
+        return $this->Tarif;
+    }
+
+    public function setTarif(?Tarif $Tarif): self
+    {
+        $this->Tarif = $Tarif;
+
+        return $this;
+    }
+
+    public function getEvenement(): ?Evenement
+    {
+        return $this->Evenement;
+    }
+
+    public function setEvenement(?Evenement $Evenement): self
+    {
+        $this->Evenement = $Evenement;
 
         return $this;
     }

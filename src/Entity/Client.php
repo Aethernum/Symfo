@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,17 +19,12 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $Id_Client;
-
-    /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=30)
      */
     private $NomClient;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=30)
      */
     private $PrenomClient;
 
@@ -51,21 +48,25 @@ class Client
      */
     private $TypeClient;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Billet", mappedBy="Client", orphanRemoval=true)
+     */
+    private $Billets;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", mappedBy="Clients")
+     */
+    private $Evenements;
+
+    public function __construct()
+    {
+        $this->Billets = new ArrayCollection();
+        $this->Evenements = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdClient(): ?int
-    {
-        return $this->Id_Client;
-    }
-
-    public function setIdClient(int $Id_Client): self
-    {
-        $this->Id_Client = $Id_Client;
-
-        return $this;
     }
 
     public function getNomClient(): ?string
@@ -136,6 +137,65 @@ class Client
     public function setTypeClient(string $TypeClient): self
     {
         $this->TypeClient = $TypeClient;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Billet[]
+     */
+    public function getBillets(): Collection
+    {
+        return $this->Billets;
+    }
+
+    public function addBillet(Billet $billet): self
+    {
+        if (!$this->Billets->contains($billet)) {
+            $this->Billets[] = $billet;
+            $billet->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBillet(Billet $billet): self
+    {
+        if ($this->Billets->contains($billet)) {
+            $this->Billets->removeElement($billet);
+            // set the owning side to null (unless already changed)
+            if ($billet->getClient() === $this) {
+                $billet->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->Evenements;
+    }
+
+    public function addEvenement(Evenement $evenement): self
+    {
+        if (!$this->Evenements->contains($evenement)) {
+            $this->Evenements[] = $evenement;
+            $evenement->addClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenement): self
+    {
+        if ($this->Evenements->contains($evenement)) {
+            $this->Evenements->removeElement($evenement);
+            $evenement->removeClient($this);
+        }
 
         return $this;
     }

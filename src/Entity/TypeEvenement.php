@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,11 +19,6 @@ class TypeEvenement
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_TypeEvenement;
-
-    /**
      * @ORM\Column(type="string", length=50)
      */
     private $TypeEvenement;
@@ -31,29 +28,27 @@ class TypeEvenement
      */
     private $LibelleEvenement;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Evenement", mappedBy="TypeEvenements")
+     */
+    private $Evenements;
+
+    public function __construct()
+    {
+        $this->Evenements = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdTypeEvenement(): ?int
-    {
-        return $this->id_TypeEvenement;
-    }
-
-    public function setIdTypeEvenement(int $id_TypeEvenement): self
-    {
-        $this->id_TypeEvenement = $id_TypeEvenement;
-
-        return $this;
-    }
-
-    public function getTypeEvenement(): ?string
+    public function getTypeEvenement(): ?int
     {
         return $this->TypeEvenement;
     }
 
-    public function setTypeEvenement(string $TypeEvenement): self
+    public function setTypeEvenement(int $TypeEvenement): self
     {
         $this->TypeEvenement = $TypeEvenement;
 
@@ -68,6 +63,37 @@ class TypeEvenement
     public function setLibelleEvenement(string $LibelleEvenement): self
     {
         $this->LibelleEvenement = $LibelleEvenement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->Evenements;
+    }
+
+    public function addEvenement(Evenement $evenement): self
+    {
+        if (!$this->Evenements->contains($evenement)) {
+            $this->Evenements[] = $evenement;
+            $evenement->setTypeEvenements($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenement): self
+    {
+        if ($this->Evenements->contains($evenement)) {
+            $this->Evenements->removeElement($evenement);
+            // set the owning side to null (unless already changed)
+            if ($evenement->getTypeEvenements() === $this) {
+                $evenement->setTypeEvenements(null);
+            }
+        }
 
         return $this;
     }

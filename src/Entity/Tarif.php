@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,74 +19,98 @@ class Tarif
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100)
      */
-    private $id_Tarif;
+    private $type_tarif;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $TypeTarif;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $LibelleTarif;
+    private $libelle_tarif;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $Montant;
+    private $montant;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Billet", mappedBy="Tarif")
+     */
+    private $Billets;
+
+    public function __construct()
+    {
+        $this->Billets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdTarif(): ?int
-    {
-        return $this->id_Tarif;
-    }
-
-    public function setIdTarif(int $id_Tarif): self
-    {
-        $this->id_Tarif = $id_Tarif;
-
-        return $this;
-    }
-
     public function getTypeTarif(): ?string
     {
-        return $this->TypeTarif;
+        return $this->type_tarif;
     }
 
-    public function setTypeTarif(string $TypeTarif): self
+    public function setTypeTarif(string $type_tarif): self
     {
-        $this->TypeTarif = $TypeTarif;
+        $this->type_tarif = $type_tarif;
 
         return $this;
     }
 
     public function getLibelleTarif(): ?string
     {
-        return $this->LibelleTarif;
+        return $this->libelle_tarif;
     }
 
-    public function setLibelleTarif(string $LibelleTarif): self
+    public function setLibelleTarif(string $libelle_tarif): self
     {
-        $this->LibelleTarif = $LibelleTarif;
+        $this->libelle_tarif = $libelle_tarif;
 
         return $this;
     }
 
     public function getMontant(): ?float
     {
-        return $this->Montant;
+        return $this->montant;
     }
 
-    public function setMontant(float $Montant): self
+    public function setMontant(float $montant): self
     {
-        $this->Montant = $Montant;
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Billet[]
+     */
+    public function getBillets(): Collection
+    {
+        return $this->Billets;
+    }
+
+    public function addBillet(Billet $billet): self
+    {
+        if (!$this->Billets->contains($billet)) {
+            $this->Billets[] = $billet;
+            $billet->setTarif($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBillet(Billet $billet): self
+    {
+        if ($this->Billets->contains($billet)) {
+            $this->Billets->removeElement($billet);
+            // set the owning side to null (unless already changed)
+            if ($billet->getTarif() === $this) {
+                $billet->setTarif(null);
+            }
+        }
 
         return $this;
     }
