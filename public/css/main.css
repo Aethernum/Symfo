@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+html,body{
+    min-height: 100vh;
+}
+
+.backimage{
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/roubaix.jfif");
+    background-size: cover;
+    background-position: bottom;
+    height: 60%;
+    width: 100%;
+    z-index: -1;
+}
+
+.main-title{
+    text-align: center;
+    color: #fff;
+    font-size: 5em;
+    margin-top: 20vh;
+}
+
+.subtitle{
+    text-align: center;
+    color: #fff;
+    font-size: 2em;
+    margin-top: 5vh;
+}
+
+.main{
+    width: 60%;
+    margin: 10vh auto;
+    background-color: #fff;
+    min-height: 100%;
+}
+
