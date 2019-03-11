@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class EvenementController extends AbstractController
 {
     /**
-     * @Route("/evenement", name="evenement")
+     * @Route("/evenements", name="evenement")
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
@@ -30,6 +30,7 @@ class EvenementController extends AbstractController
         return $this->render('evenement/index.html.twig', [
             'controller_name' => 'EvenementController',
             'form'=>$form->createView(),
+            'name' => 'Evenement',
         ]);
     }
 }

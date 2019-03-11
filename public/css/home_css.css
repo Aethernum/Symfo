@@ -1,0 +1,45 @@
+.div-carousel{
+    text-align: center;
+    color: white;
+    background-color: rgb(172, 172, 190);
+    height: 270px;
+    width: 200px;
+    border-radius: 12px;
+    margin: auto;
+}
+
+.owl-carousel .item {
+    text-align: center;
+}
+
+.owl-carousel .nav-btn{
+    position: absolute;
+    width: 26px;
+    cursor: pointer;
+    top: 75px !important;
+}
+
+.owl-carousel .owl-prev.disabled,
+.owl-carousel .owl-next.disabled{
+pointer-events: none;
+opacity: 0.2;
+}
+
+.owl-carousel .prev-slide{
+    left: -126px;
+}
+.owl-carousel .next-slide{
+    right: -100px;
+}
+
+.owl-next:hover, .owl-prev:hover{
+    color: rgba(133, 101, 81,0.5)!important;
+}
+
+.owl-next, .owl-prev{
+    color: rgba(133, 101, 81, 0.7)!important;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+    background-color: rgba(133, 101, 81, 0.8)!important;
+}

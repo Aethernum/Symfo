@@ -14,6 +14,7 @@ class BilletController extends AbstractController
     {
         return $this->render('billet/index.html.twig', [
             'controller_name' => 'BilletController',
+            'name' => 'Billet'
         ]);
     }
 }
