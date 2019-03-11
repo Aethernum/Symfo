@@ -14,6 +14,7 @@ class CompteController extends AbstractController
     {
         return $this->render('compte/index.html.twig', [
             'controller_name' => 'CompteController',
+            'name' => 'Compte',
         ]);
 
     }
