@@ -3,10 +3,11 @@ $(document).ready(function(){
         margin: 30,
         loop: true,
         center: true,
-        autoplay: true,
         autoplayTimeout: 1500,
         autoplayHoverPause: true,
         nav: true,
-        navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"]
+        animateIn: true,
+        navText : ["<div class='nav-btn prev-slide'><i class='fas fa-chevron-circle-left fa-3x'></i></div>",
+        "<div class='nav-btn next-slide'><i class='fas fa-chevron-circle-right fa-3x'></i></div>"]
     });
   });
