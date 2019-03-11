@@ -1,0 +1,9 @@
+.div-carousel{
+    text-align: center;
+    color: white;
+    background-color: rgb(172, 172, 190);
+    height: 270px;
+    width: 200px;
+    border-radius: 12px;
+    margin: auto;
+}

@@ -5,7 +5,11 @@
 }
 
 html,body{
-    min-height: 100vh;
+    height: 100%;
+}
+
+body{
+    background-color: #f8f9fa;
 }
 
 .backimage{
@@ -13,7 +17,7 @@ html,body{
     top: 0;
     background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/roubaix.jfif");
     background-size: cover;
-    background-position: bottom;
+    background-position: top;
     height: 60%;
     width: 100%;
     z-index: -1;
@@ -36,7 +40,26 @@ html,body{
 .main{
     width: 60%;
     margin: 10vh auto;
-    background-color: #fff;
-    min-height: 100%;
 }
 
+.navbar{
+    background-color: rgb(97, 74, 74)!important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.body-home{
+    background-color: #fff;
+    height: 100%;
+    padding: 45px;
+}
