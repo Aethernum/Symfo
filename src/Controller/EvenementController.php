@@ -8,12 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvenementController extends AbstractController
 {
     /**
-     * @Route("/evenement", name="evenement")
+     * @Route("/evenements", name="evenement")
      */
     public function index()
     {
         return $this->render('evenement/index.html.twig', [
             'controller_name' => 'EvenementController',
+            'name' => 'Evenement',
         ]);
     }
 }
