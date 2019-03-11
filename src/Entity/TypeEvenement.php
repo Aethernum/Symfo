@@ -18,10 +18,6 @@ class TypeEvenement
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $TypeEvenement;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -43,17 +39,6 @@ class TypeEvenement
         return $this->id;
     }
 
-    public function getTypeEvenement(): ?int
-    {
-        return $this->TypeEvenement;
-    }
-
-    public function setTypeEvenement(int $TypeEvenement): self
-    {
-        $this->TypeEvenement = $TypeEvenement;
-
-        return $this;
-    }
 
     public function getLibelleEvenement(): ?string
     {
@@ -96,5 +81,9 @@ class TypeEvenement
         }
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->getLibelleEvenement();
     }
 }

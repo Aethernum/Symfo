@@ -3,18 +3,60 @@
 {% block title %}Hello EvenementController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1>Evenement</h1>
+<div class="row justify-content-center">
+    <div class="col-md-4 p-4">
+        <div class="card">
+            <div class="card-header">
+                New Evenement
+            </div>
+            <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ form_label(form.NomEvenement, 'Nom de l\'évènement' )}}
+                            {{ form_widget(form.NomEvenement, {'attr': {'class': 'form-control','type':'text','placeholder':'Mon évènement'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/lahbibb/public_html/Symfo/src/Controller/EvenementController.php'|file_link(0) }}">src/Controller/EvenementController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/lahbibb/public_html/Symfo/templates/evenement/index.html.twig'|file_link(0) }}">templates/evenement/index.html.twig</a></code></li>
-    </ul>
+                        <div class="input-group date" id='datetimepicker1'>
+                            {{ form_label(form.Date, 'Date évènement')}}
+                            {{ form_widget(form.Date, {'attr': {'required': 'true' }}) }}
+                        </div>
+                    
+                        <div  class="form-group col-12 col-md-6">
+                            {{ form_label(form.HeureDebut, 'Heure Début')}}
+                            {{ form_widget(form.HeureDebut, {'attr': {'required': 'true' }}) }}
+                        </div>
+                        <div  class="form-group col-md-6">
+                            {{ form_label(form.HeureFin, 'Heure Fin')}}
+                            {{ form_widget(form.HeureFin, {'attr': {'required': 'true' }}) }}
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            {{ form_label(form.NombrePlace, 'Nombre de places' )}}
+                            {{ form_widget(form.NombrePlace, {'attr': {'class': 'form-control','required':'true'}}) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form_label(form.CategoriePlace, 'Catégorie de places' )}}
+                            {{ form_widget(form.CategoriePlace, {'attr': {'class': 'form-control','required':'true'}}) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form_label(form.Clients, 'Client' )}}
+                            {{ form_widget(form.Clients , {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form_label(form.TypeEvenements, 'Type d\'évènements' )}}
+                            {{ form_widget(form.TypeEvenements , {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 </div>
+
+
+  
 {% endblock %}
