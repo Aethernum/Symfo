@@ -22,14 +22,6 @@ class EvenementType extends AbstractType
             ->add('HeureFin')
             ->add('NombrePlace')
             ->add('CategoriePlace')
-            ->add('Clients',EntityType::class, [
-                // looks for choices from this entity
-                'class' => Client::class,
-            
-                // uses the User.username property as the visible option string
-                'choice_label' => 'nomClient',
-                "multiple"=>true,
-                "required"=>false])
             ->add('TypeEvenements',EntityType::class, [
                 // looks for choices from this entity
                 'class' => TypeEvenement::class,

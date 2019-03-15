@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Evenement;
 use App\Entity\TypeEvenement;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -13,6 +14,13 @@ class AppFixtures extends Fixture
     {
         // php bin/console doctrine:fixtures:load
         $faker = \Faker\Factory::create();
+        //create 10 User
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+            $user->setUsername($faker->lastName());
+            $user->setPassword('password');
+            $manager->persist($user);
+        }
         $type=[];
         // create 3 TypeEvent! Bam!
         $type[0]= new TypeEvenement();
