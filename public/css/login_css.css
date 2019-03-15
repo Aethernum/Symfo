@@ -1,0 +1,36 @@
+.cnct-title{
+    text-align: center
+}
+
+.form-control:not(:nth-of-type(1)){
+    margin-top: 25px;
+}
+
+.form-control:nth-of-type(1){
+    margin-top: 35px;
+}
+
+.form-control{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    line-height: 1.5;
+    border: 1px solid #856551;    
+}
+
+.div-cnct-button{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: 40px;  
+}
+
+.cnct-button{
+    border: 1px solid #856551;
+    overflow: hidden;
+}
+
+.cnct-button:hover{
+    background-color: #856551;
+    color: white;
+}
