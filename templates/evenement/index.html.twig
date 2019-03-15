@@ -1,62 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EvenementController!{% endblock %}
+{% block title %}Evenement index{% endblock %}
 
 {% block body %}
-<h1>Evenement</h1>
-<div class="row justify-content-center">
-    <div class="col-md-4 p-4">
-        <div class="card">
-            <div class="card-header">
-                New Evenement
-            </div>
-            <div class="card-body">
-                    {{ form_start(form) }}
-                    <div class="form-row">
-                        <div class="form-group">
-                            {{ form_label(form.NomEvenement, 'Nom de l\'évènement' )}}
-                            {{ form_widget(form.NomEvenement, {'attr': {'class': 'form-control','type':'text','placeholder':'Mon évènement'}}) }}
-                        </div>
-                    </div>
-                    <div class="form-row">
+    <h1>Evenement index</h1>
 
-                        <div class="input-group date" id='datetimepicker1'>
-                            {{ form_label(form.Date, 'Date évènement')}}
-                            {{ form_widget(form.Date, {'attr': {'required': 'true' }}) }}
-                        </div>
-                    
-                        <div  class="form-group col-12 col-md-6">
-                            {{ form_label(form.HeureDebut, 'Heure Début')}}
-                            {{ form_widget(form.HeureDebut, {'attr': {'required': 'true' }}) }}
-                        </div>
-                        <div  class="form-group col-md-6">
-                            {{ form_label(form.HeureFin, 'Heure Fin')}}
-                            {{ form_widget(form.HeureFin, {'attr': {'required': 'true' }}) }}
-                        </div>
-                        <div class="form-group col-12 col-md-6">
-                            {{ form_label(form.NombrePlace, 'Nombre de places' )}}
-                            {{ form_widget(form.NombrePlace, {'attr': {'class': 'form-control','required':'true'}}) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ form_label(form.CategoriePlace, 'Catégorie de places' )}}
-                            {{ form_widget(form.CategoriePlace, {'attr': {'class': 'form-control','required':'true'}}) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ form_label(form.Clients, 'Client' )}}
-                            {{ form_widget(form.Clients , {'attr': {'class': 'form-control'}}) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ form_label(form.TypeEvenements, 'Type d\'évènements' )}}
-                            {{ form_widget(form.TypeEvenements , {'attr': {'class': 'form-control'}}) }}
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    {{ form_end(form) }}
-            </div>
-        </div>
-    </div>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomEvenement</th>
+                <th>Date</th>
+                <th>HeureDebut</th>
+                <th>HeureFin</th>
+                <th>NombrePlace</th>
+                <th>CategoriePlace</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.NomEvenement }}</td>
+                <td>{{ evenement.Date ? evenement.Date|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.HeureDebut ? evenement.HeureDebut|date('H:i:s') : '' }}</td>
+                <td>{{ evenement.HeureFin ? evenement.HeureFin|date('H:i:s') : '' }}</td>
+                <td>{{ evenement.NombrePlace }}</td>
+                <td>{{ evenement.CategoriePlace }}</td>
+                <td>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-
-  
+    <a href="{{ path('evenement_new') }}">Create new</a>
 {% endblock %}
