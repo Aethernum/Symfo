@@ -11,6 +11,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        // php bin/console doctrine:fixtures:load
         $faker = \Faker\Factory::create();
         $type=[];
         // create 3 TypeEvent! Bam!
