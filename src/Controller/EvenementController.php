@@ -57,6 +57,7 @@ class EvenementController extends AbstractController
     {
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement,
+            'name' => 'Voir un evenement',
         ]);
     }
 
@@ -73,12 +74,14 @@ class EvenementController extends AbstractController
 
             return $this->redirectToRoute('evenement_index', [
                 'id' => $evenement->getId(),
+                'name' => 'Modifier un evenement',
             ]);
         }
 
         return $this->render('evenement/edit.html.twig', [
             'evenement' => $evenement,
             'form' => $form->createView(),
+            'name' => 'Ajouter un evenement',
         ]);
     }
 
