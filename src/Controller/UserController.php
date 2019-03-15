@@ -61,6 +61,7 @@ class UserController extends AbstractController
     {
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'name' => 'Mon compte'
         ]);
     }
 
@@ -77,12 +78,14 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('user_index', [
                 'id' => $user->getId(),
+                'name' => 'Edition de l\'utilisateur'
             ]);
         }
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'name' => 'Edition de l\'utilisateur'
         ]);
     }
 
