@@ -3,43 +3,19 @@
 {% block title %}Evenement index{% endblock %}
 
 {% block body %}
-    <h1>Evenement index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomEvenement</th>
-                <th>Date</th>
-                <th>HeureDebut</th>
-                <th>HeureFin</th>
-                <th>NombrePlace</th>
-                <th>CategoriePlace</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Les évenements</h1>
+    <div class="test">
         {% for evenement in evenements %}
-            <tr>
-                <td>{{ evenement.id }}</td>
-                <td>{{ evenement.NomEvenement }}</td>
-                <td>{{ evenement.Date ? evenement.Date|date('Y-m-d') : '' }}</td>
-                <td>{{ evenement.HeureDebut ? evenement.HeureDebut|date('H:i:s') : '' }}</td>
-                <td>{{ evenement.HeureFin ? evenement.HeureFin|date('H:i:s') : '' }}</td>
-                <td>{{ evenement.NombrePlace }}</td>
-                <td>{{ evenement.CategoriePlace }}</td>
-                <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
+            {% if loop.index0 % 3 == 0  and loop.first %}
+                <div class="row">
+            {% elseif loop.index0 % 3 == 0 %}
+                </div>
+                <div class="row">
+            {% endif %}
+                <div class="col-4">{{ evenement.NomEvenement }}</div>
+            {% if loop.index0 % 3 == 1 or loop.last %}
+            {% endif %}   
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
     <a href="{{ path('evenement_new') }}">Create new</a>
 {% endblock %}
