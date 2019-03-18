@@ -1,18 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Evenement index{% endblock %}
+{% block title %}{{ name }}{% endblock %}
+
+{% block stylesheets %}
+        <link href="{{ asset('css/evenement_css.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
     <h1>Les évenements</h1>
-    <div class="test">
+    <div class="evenements">
         {% for evenement in evenements %}
             {% if loop.index0 % 3 == 0  and loop.first %}
-                <div class="row">
+                <div class="row row-event">
             {% elseif loop.index0 % 3 == 0 %}
                 </div>
-                <div class="row">
+                <div class="row row-event">
             {% endif %}
-                <div class="col-4">{{ evenement.NomEvenement }}</div>
+                <div class="col-4">
+                    <a href="#">
+                        <div class="evenement">
+                            <img src="http://ekladata.com/QjzwDLpYBFzg3I7eTEJ5w848tbk@550x552.jpg" alt="sample41"/>
+                            <figcaption>
+                                <div class="titre-event">{{ evenement.NomEvenement }}</div>
+                            </figcaption>			
+                        </div>
+                    </a>
+                </div>
             {% if loop.index0 % 3 == 1 or loop.last %}
             {% endif %}   
         {% endfor %}
