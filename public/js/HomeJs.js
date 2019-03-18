@@ -11,3 +11,5 @@ $(document).ready(function(){
         "<div class='nav-btn next-slide'><i class='fas fa-chevron-circle-right fa-3x'></i></div>"]
     });
   });
+
+  
