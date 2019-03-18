@@ -30,5 +30,8 @@
             {% endif %}   
         {% endfor %}
     </div>
-    <a href="{{ path('evenement_new') }}">Create new</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('evenement_new') }}">Create new</a>                                
+    {% endif %}
+    
 {% endblock %}

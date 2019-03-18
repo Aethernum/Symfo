@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/cree", name="user_new", methods={"GET","POST"})
+     * @Route("/new", name="user_new", methods={"GET","POST"})
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
@@ -55,7 +56,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/show/{user}", name="user_show", methods={"GET"})
+     * @Route("/{username}", name="user_show", methods={"GET"})
      */
     public function show(User $user): Response
     {
