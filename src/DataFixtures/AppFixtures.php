@@ -7,9 +7,19 @@ use App\Entity\TypeEvenement;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+
 
 class AppFixtures extends Fixture
-{
+{   
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         // php bin/console doctrine:fixtures:load
@@ -18,7 +28,8 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user->setUsername($faker->lastName());
-            $user->setPassword('password');
+            $password = $this->encoder->encodePassword($user, 'password');
+            $user->setPassword($password);
             $manager->persist($user);
         }
         $type=[];
