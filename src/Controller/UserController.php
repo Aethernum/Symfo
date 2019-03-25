@@ -12,21 +12,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * @Route("/compte")
- */
+
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
+     * @Route("/compte", name="user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {  
-        return $this->redirect($this->getUser()->getUsername());
+        return $this->redirect('compte/'.$this->getUser()->getUsername());
     }
 
     /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @Route("/register", name="user_new", methods={"GET","POST"})
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
@@ -53,10 +51,15 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{username}", name="user_show", methods={"GET"})
+     * @Route("/compte/{username}", name="user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user,$username): Response
     {
+       $entityManager = $this->getDoctrine()->getManager(); 
+       $cookie= $entityManager->getRepository(User::class)->findBy(["username"=>$username]);
+       if($cookie[0]->getUsername() != $this->getUser()->getUsername()){
+            throw $this->createAccessDeniedException('T\'es pas chez toi');
+        }
         return $this->render('user/show.html.twig', [
             'user' => $user,
             'name' => 'Mon compte'
@@ -64,7 +67,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/compte/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user): Response
     {
@@ -92,7 +95,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/compte/{id}", name="user_delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {

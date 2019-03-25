@@ -27,7 +27,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evenement_new", methods={"GET","POST"})
+     * @Route("/admin/new", name="evenement_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -53,7 +53,7 @@ class EvenementController extends AbstractController
     /**
      * @Route("/{id}", name="evenement_show", methods={"GET"})
      */
-    public function show(Evenement $evenement): Response
+    public function show(Evenement $evenement,$id): Response
     {
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement,
@@ -62,7 +62,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="evenement_edit", methods={"GET","POST"})
+     * @Route("/{id}/admin/edit", name="evenement_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evenement $evenement): Response
     {

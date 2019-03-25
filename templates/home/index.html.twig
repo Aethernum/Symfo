@@ -12,10 +12,12 @@
 <div class="carousel-wrap">
     <div class="owl-carousel owl-theme">        
         {% for evenement in evenements|slice(0, 5) %}
-          <div class="item">
-            <img src="https://padelmagazine.fr/wp-content/uploads/2018/09/photo-1456983933114-c22026990f4b-3.jpeg" />
-            <span class="img-text">{{ evenement.NomEvenement }}</span>
-          </div> 
+          <a href="{{ path('evenement_show', { id: evenement.id }) }}">
+            <div class="item">
+              <img src="https://padelmagazine.fr/wp-content/uploads/2018/09/photo-1456983933114-c22026990f4b-3.jpeg" />
+              <span class="img-text">{{ evenement.NomEvenement }}</span>
+            </div> 
+          </a>
         {% endfor %}
     </div>
 </div>
