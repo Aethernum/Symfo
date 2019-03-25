@@ -83,6 +83,10 @@ class UserController extends AbstractController
             ]);
         }
 
+        if($user->getUsername() != $this->getUser()->getUsername()){
+            throw $this->createAccessDeniedException('Ce n\'est pas votre compte');
+        }
+
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),

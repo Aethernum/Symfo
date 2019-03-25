@@ -16,7 +16,7 @@ body{
 .backimage{
     position: absolute;
     top: 0;
-    background-image: linear-gradient(rgba(109, 74, 58, 0.2), rgba(109, 74, 58, 0.2)), url("../img/roubaix.png");
+    background-image: linear-gradient(rgba(57, 54, 58, 0.2), rgba(57, 54, 58, 0.2)), url("../img/roubaix.png");
     background-size: cover;
     background-position: top;
     height: 60%;
@@ -48,7 +48,7 @@ body{
 
 .navbar{
     font-size: 1.2em;
-    background-color: rgb(133, 101, 81)!important;
+    background-color: rgb(227, 0, 106)!important;
 }
 
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
@@ -56,11 +56,13 @@ body{
 }
 
 .navbar-light .navbar-nav .nav-link{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 1);
 }
 
 .body-home{

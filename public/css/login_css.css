@@ -15,7 +15,7 @@
     margin: auto;
     display: flex;
     line-height: 1.5;
-    border: 1px solid #856551;    
+    border: 1px solid rgba(57, 54, 58, 1);    
 }
 
 .div-cnct-button{
@@ -26,11 +26,11 @@
 }
 
 .cnct-button{
-    border: 1px solid #856551;
+    border: 1px solid rgba(57, 54, 58, 1);
     overflow: hidden;
 }
 
 .cnct-button:hover{
-    background-color: #856551;
+    background-color: rgba(57, 54, 58, 1);
     color: white;
 }

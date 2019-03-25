@@ -37,13 +37,13 @@ opacity: 0.2;
 }
 
 .owl-next:hover, .owl-prev:hover{
-    color: rgba(133, 101, 81,0.5)!important;
+    color: rgba(57, 54, 58, 0.5)!important;
 }
 
 .owl-next, .owl-prev{
-    color: rgba(133, 101, 81, 0.7)!important;
+    color: rgba(57, 54, 58, 0.7)!important;
 }
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
-    background-color: rgba(133, 101, 81, 0.8)!important;
+    background-color: rgba(57, 54, 58, 0.8)!important;
 }
