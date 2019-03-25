@@ -1,0 +1,22 @@
+.user-show{
+    display: inline-flex;
+    margin: 35px;
+}
+
+.user-mng{
+    margin-bottom: 40px;
+}
+
+.display-username{
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.user-username{
+    font-size: 1.05em;
+    margin-left: 20px;
+}
+
+.suppr-compte{
+    margin-top: 10px;
+}

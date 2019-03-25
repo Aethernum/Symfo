@@ -32,6 +32,13 @@ class AppFixtures extends Fixture
             $user->setPassword($password);
             $manager->persist($user);
         }
+        $user->setUsername("root");
+        $password = $this->encoder->encodePassword($user, 'root');
+        $user->setPassword($password);
+        $user_role = ["ROLE_ADMIN"];
+        $user->setRoles($user_role);
+        $manager->persist($user);
+
         $type=[];
         // create 3 TypeEvent! Bam!
         $type[0]= new TypeEvenement();
